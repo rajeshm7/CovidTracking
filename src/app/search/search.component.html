@@ -1,0 +1,56 @@
+<div class="container">
+<header>
+    <p><a href="/search">Home</a></p>
+</header>
+<h1>Welcome to Covid Tracking System</h1>
+<p> <a href="/search">Search another user</a></p>
+
+<form>
+    <p><b>Search for employee Covid details here !!!</b></p>
+    <p><b>Username: </b></p>
+    <input placeholder="Enter the Aadhar Id"  type="text" required name="aadhar" [(ngModel)]="id"/> <br>
+    <button type="submit" name="search" (click)="searchEmployee()"> Search</button>   
+</form>
+</div>
+<div *ngIf = "message" class="container">
+    <p><b>Please find the {{message.name}}'s Covid details below :</b></p>
+    <p><b>AadharId: </b>{{message.aadharId}}</p>
+    <p><b>Name: </b>{{message.name}}</p>
+    <p><b>Location: </b>{{message.location}}</p>
+    <p><b>Is he/she affected by Covid ?: </b>{{message.isCovidAffected}}</p>
+    <p><b>Quarantine status : </b>{{message.isInQuarantine}}</p>
+    <p><b>No of Quatantine days left: </b>{{message.noOfQuarantineDaysLeft}}</p>
+    <p><b>Is he/she cured from Covid : </b>{{message.isCovidCured}}</p> 
+    <br>
+    
+<form> 
+    <h3>Do you want to report {{message.name}} for Covid symptoms/testing? If yes, Please Click Expand / Collapse button</h3>
+    <button (click)="toggleCollapse()">Expand / Collapse</button>
+    <div *ngIf = "!isCollapsed">
+        <p>Please enter {{message.name}}' details below</p>
+    <p><b>AadharId: </b><input placeholder="Enter the Employee aadhar Id" type="text" name="aadhar" [(ngModel)]="employee.aadharId"></p>
+    <p><b>Name: </b><input placeholder="Enter the Employee Name" type="text" name="aadhar" [(ngModel)]="employee.name"/></p>
+    <p><b>Location: </b><input placeholder="Enter the the Employee Location" type="text" name="aadhar" [(ngModel)]="employee.location"/></p>
+    <p><b>Employee Id: </b><input placeholder="Enter the the Emploee ID" type="text" name="aadhar" [(ngModel)]="employee.empId"/></p>
+    <p><b>Temperature: </b><input placeholder="Enter the the Emploee Temperature" type="text" name="aadhar" [(ngModel)]="employee.temperature"/></p>
+    <p><b>Is He/She Having Symptoms ?: Please type Yes/No</b></p><input placeholder="Enter Y/N if having symptoms" type="text" name="aadhar" [(ngModel)]="employee.isHavingSymptoms"/>
+    
+    <input type="submit" name="search" (click)="reportEmployee()">
+    </div>
+    <div *ngIf = "emp">
+    Employee : {{emp.name}} was reported succesfully to the govt for covid tracking/testing.
+    </div>
+    <div *ngIf = "!isReportError">This is an error while submitting</div>
+    
+</form>
+
+</div>
+<div *ngIf = "!iserror">This user details was not available in the database.</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<footer>&copy; Copyright all rights reserved 2020 Rajesh</footer>
